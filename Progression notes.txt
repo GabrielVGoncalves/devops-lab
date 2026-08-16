@@ -1,0 +1,7 @@
+Project progression notes
+
+1. On the first days I have not took any notes as I decided to start today.
+
+2. Today I start to migrate the app to a docker image to facilitate making deploys and have a better controll of the environment.
+    - Started by creating the Dockerfile 
+    - After the Dockerfile was created i needed to adapt it to my application, installing the dependencies of the file requirements.txt, exposing the port 5001
