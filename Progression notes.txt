@@ -5,3 +5,23 @@ Project progression notes
 2. Today I start to migrate the app to a docker image to facilitate making deploys and have a better controll of the environment.
     - Started by creating the Dockerfile 
     - After the Dockerfile was created i needed to adapt it to my application, installing the dependencies of the file requirements.txt, exposing the port 5001
+
+02/09/2026. Study postgresql to include a database for the application.
+
+-- 12/09/2026
+    run manually the API and Postgres to make them to connect each other. The applications needs to store the API metrics in the database
+    
+    ## make both containers reach eachother 
+    - images:
+        devops-lab % docker images                                                                                                     
+        IMAGE             ID             DISK USAGE   CONTENT SIZE   EXTRA
+        flaskapp:latest   1bd87f455a47       1.64GB          409MB    U   
+        postgres:latest   4ef4dbc939d6        672MB          167MB    U   
+
+    - create customer network 
+        devops-lab % docker network create mynetwork
+
+    - run flaskapp and postgress containers
+        devops-lab % docker run -it -d -p 5432:5432 --name postgres --network mynetwork -e POSTGRES_PASSWORD=mypassword postgres:latest
+        devops-lab % docker run -it -d -p 8080:80 --name postgres --network mynetwork flaskapp:latest
+
