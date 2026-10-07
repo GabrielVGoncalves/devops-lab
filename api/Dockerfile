@@ -7,8 +7,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 RUN apt-get update && apt-get upgrade -y
 
 #Import the code to the image
-COPY app.py /
-COPY test_db.py /
+COPY api/app.py /
+COPY scripts/test_db.py /
 
 #Expose port 5001
 EXPOSE 5001
